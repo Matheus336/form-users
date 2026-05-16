@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Emily Johnson",
+    "age": 29,
+    "gender": "female",
+    "email": "emily.johnson@email.com",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Michael Williams Smith",
+    "age": 36,
+    "gender": "male",
+    "email": "michael.williams.smith@email.com",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "Sophia Brown Henderson",
+    "age": 43,
+    "gender": "female",
+    "email": "sophia.brown@email.com",
+    "active": false
+  },
+  {
+    "id": 4,
+    "name": "James Davis",
+    "age": 46,
+    "gender": "male",
+    "email": "james.davis@email.com",
+    "active": true
+  }
+]
