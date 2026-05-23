@@ -5,7 +5,7 @@
     "age": 29,
     "gender": "female",
     "email": "emily.johnson@email.com",
-    "active": true
+    "status": "active"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "age": 36,
     "gender": "male",
     "email": "michael.williams.smith@email.com",
-    "active": true
+    "status": "active"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "age": 43,
     "gender": "female",
     "email": "sophia.brown@email.com",
-    "active": false
+    "status": "inactive"
   },
   {
     "id": 4,
@@ -29,6 +29,6 @@
     "age": 46,
     "gender": "male",
     "email": "james.davis@email.com",
-    "active": true
+    "status": "inactive"
   }
 ]

@@ -4,5 +4,5 @@ export interface User {
   age: number;
   gender: string;
   email: string;
-  active: boolean;
+  status: "active" | "inactive";
 }
