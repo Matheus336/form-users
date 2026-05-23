@@ -4,7 +4,7 @@ export interface User {
   age: number;
   gender: string;
   email: string;
-  active: Boolean;
+  status: "active" | "inactive";
 }
 
 export interface CreateUser extends Omit<User, "id"> {}

@@ -1,47 +1,32 @@
-import { useState } from "react";
 import { CreateUser } from "../interfaces/user";
 import { createUser } from "../mutations/create-user";
+import { useForm } from "react-hook-form";
 
 export const useCreateUserLogic = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState<number>(0);
-  const [gender, setGender] = useState<"male" | "female">("male");
-  const [email, setEmail] = useState("");
-  const [active, setActive] = useState(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<CreateUser>({
+    defaultValues: {
+      name: "",
+      email: "",
+      age: 0,
+      gender: "male",
+      status: "active",
+    },
+  });
 
-  const resetForm = () => {
-    setName("");
-    setAge(0);
-    setGender("male");
-    setEmail("");
-    setActive(true);
-  };
+  const handleCreateUser = handleSubmit(async (data) => {
+    await createUser(data);
 
-  const handleCreateUser = async () => {
-    const newUserData: CreateUser = {
-      name,
-      age,
-      gender,
-      email,
-      active,
-    };
-
-    await createUser(newUserData);
-
-    resetForm();
-  };
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+  });
 
   return {
-    name,
-    setName,
-    age,
-    setAge,
-    gender,
-    setGender,
-    email,
-    setEmail,
-    active,
-    setActive,
+    register,
     handleCreateUser,
+    errors,
+    isSubmitting,
   };
 };

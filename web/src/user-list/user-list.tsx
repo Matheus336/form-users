@@ -42,7 +42,7 @@ export function UserList({ userListPromise }: UserListProps) {
               <td className="py-3 px-4 text-sm text-slate-500">{user.email}</td>
 
               <td className="py-3 px-4 text-sm">
-                {user.active ? (
+                {user.status === "active" ? (
                   <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-green-600 text-white shadow-sm">
                     Ativo
                   </span>
