@@ -28,7 +28,7 @@ export function CreateUser() {
           label="Idade"
           type="number"
           placeholder="Idade"
-          {...register("age")}
+          {...register("age", { valueAsNumber: true })}
         />
 
         <Select label="Gênero" {...register("gender")}>
@@ -52,10 +52,12 @@ export function CreateUser() {
 
       <button
         type="submit"
-        className="w-full py-3 px-4 bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors font-semibold rounded-xl shadow-sm cursor-pointer disabled:opacity-40 disabled:hover:bg-blue-50 disabled:cursor-not-allowed"
+        className={`w-full py-3 px-4 bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors font-semibold rounded-xl shadow-sm cursor-pointer disabled:opacity-40 disabled:hover:bg-blue-50 disabled:cursor-not-allowed ${
+          isSubmitting ? "btn-loading" : ""
+        }`}
         disabled={isSubmitting}
       >
-        Enviar
+        {isSubmitting ? "Enviando..." : "Enviar"}
       </button>
     </form>
   );
