@@ -30,5 +30,13 @@
     "gender": "male",
     "email": "james.davis@email.com",
     "status": "inactive"
+  },
+  {
+    "id": "5",
+    "name": "Matheus Felipe",
+    "email": "matheusfelipem336@gmail.com",
+    "age": 30,
+    "gender": "male",
+    "status": "active"
   }
 ]

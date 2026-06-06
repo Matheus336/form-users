@@ -1,15 +1,12 @@
 import { User } from "../interfaces/user";
-import { use } from "react";
 import { useUserList } from "./user-list.logic";
 import { PencilLine, Trash2 } from "lucide-react";
 
 interface UserListProps {
-  userListPromise: Promise<User[]>;
+  userList?: User[];
 }
 
-export function UserList({ userListPromise }: UserListProps) {
-  const userList = use(userListPromise);
-
+export function UserList({ userList }: UserListProps) {
   const { handleDeleteUser } = useUserList();
 
   return (
@@ -26,7 +23,7 @@ export function UserList({ userListPromise }: UserListProps) {
         </thead>
 
         <tbody className="divide-y divide-gray-100">
-          {userList.map((user) => (
+          {userList?.map((user) => (
             <tr
               key={user.id}
               className="hover:bg-slate-50/50 transition-colors"

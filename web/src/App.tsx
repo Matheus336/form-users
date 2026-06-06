@@ -1,16 +1,15 @@
-import "./index.css";
-import { CreateUser } from "./create-user";
-import { UserList } from "./user-list";
-import { Suspense } from "react";
-import { getUserList } from "./queries/get-user-list";
 import { Loader } from "lucide-react";
-
-const userListPromise = getUserList();
+import { Suspense } from "react";
+import { CreateUser } from "./create-user";
+import "./index.css";
+import { UserList } from "./user-list";
+import { useUserList } from "./user-list/user-list.logic";
 
 export const App = () => {
+  const { userList } = useUserList();
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-[1400px] w-full mx-auto">
+      <div className="max-w-350 w-full mx-auto">
         <h2 className="text-3xl font-extrabold text-gray-900 mb-10 tracking-tight text-center">
           React Hook Form / Zod
         </h2>
@@ -26,7 +25,7 @@ export const App = () => {
               </div>
             }
           >
-            <UserList userListPromise={userListPromise} />
+            <UserList userList={userList} />
           </Suspense>
         </div>
       </div>

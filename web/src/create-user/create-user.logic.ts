@@ -1,5 +1,5 @@
 import { CreateUser } from "../interfaces/user";
-import { createUser } from "../mutations/create-user";
+import { useCreateUserMutation } from "../mutations/use-create-user-mutation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -42,10 +42,10 @@ export const useCreateUserLogic = () => {
     resolver: zodResolver(createUserSchema),
   });
 
+  const { createUser } = useCreateUserMutation();
+
   const handleCreateUser = handleSubmit(async (data) => {
     await createUser(data);
-
-    await new Promise((resolve) => setTimeout(resolve, 4000));
   });
 
   return {
