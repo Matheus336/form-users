@@ -36,13 +36,15 @@ export function CreateUser() {
           <option value="female">Feminino</option>
         </Select>
       </div>
+      {errors.age && <p className="text-red-500">{errors.age.message}</p>}
 
       <Input
         label="Email"
-        type="email"
+        /*type="email"*/
         placeholder="seu@email.com"
         {...register("email")}
       />
+      {errors.email && <p className="text-red-500">{errors.email.message}</p>}
 
       <RadioGroup label="Ativo">
         <RadioItem label="Sim" value="active" {...register("status")} />
