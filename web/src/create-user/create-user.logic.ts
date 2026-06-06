@@ -3,6 +3,7 @@ import { useCreateUserMutation } from "../mutations/use-create-user-mutation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 
 const createUserSchema = z.object({
   name: z
@@ -27,10 +28,13 @@ const createUserSchema = z.object({
 });
 
 export const useCreateUserLogic = () => {
+  const queryClient = useQueryClient();
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset: resetForm,
   } = useForm<CreateUser>({
     defaultValues: {
       name: "",
@@ -45,7 +49,12 @@ export const useCreateUserLogic = () => {
   const { createUser } = useCreateUserMutation();
 
   const handleCreateUser = handleSubmit(async (data) => {
-    await createUser(data);
+    await createUser(data, {
+      onSuccess: () => {
+        resetForm();
+        queryClient.invalidateQueries({ queryKey: ["users"] });
+      },
+    });
   });
 
   return {
